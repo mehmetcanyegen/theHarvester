@@ -66,8 +66,11 @@ async def start(rest_args=None):
     except Exception:
         pass
     import os
-    if len(filename) > 2 and filename[:2] == "~/":
-        filename = os.path.expanduser(filename)
+    try:
+        if len(filename) > 2 and filename[:2] == "~/":
+            filename = os.path.expanduser(filename)
+    except:
+        filename = ""
     all_emails: List = []
     all_hosts: List = []
     all_ip: List = []
